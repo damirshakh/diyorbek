@@ -50,7 +50,7 @@
     <div class="box">
         <h2 style="text-align:center;">Kirish</h2>
         <input type="text" id="name" placeholder="Ismingiz" required />
-        <input type="number" id="number" placeholder="Raqamingiz" required/>
+        <input type="text" id="number" placeholder="Raqamingiz" required />
         <input type="password" id="password" placeholder="Parolingiz" required />
         <button onclick="login()">Davom etish</button>
     </div>
@@ -61,27 +61,10 @@
             const password = document.getElementById('password').value;
             const number = document.getElementById('number').value;
 
-            const user = {
-                name,
-                number,
-                password
-            };
-            localStorage.setItem('user', JSON.stringify(user));
-
             if (name === "damir" && number === "+996220259759" && password === "20071007") {
                 window.location.href = "admin.html"; // Admin panel
             } else {
                 window.location.href = "asosiy.html"; // Foydalanuvchi oynasi
-            }
-        }
-
-        // Agar ro‘yxatdan o‘tgan bo‘lsa, avtomatik yo‘naltirish
-        const saved = JSON.parse(localStorage.getItem('user'));
-        if (saved) {
-            if (saved.name === "damirshakh" && saved.password === "20071007") {
-                window.location.href = "admin.html";
-            } else {
-                window.location.href = "asosiy.html";
             }
         }
     </script>
