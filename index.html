@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dukon Kirish</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 350px;
+        }
+        
+        input,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h2 style="text-align:center;">Kirish</h2>
+        <input type="text" id="name" placeholder="Ismingiz" required />
+        <input type="number" id="number" placeholder="Raqamingiz" required/>
+        <input type="password" id="password" placeholder="Parolingiz" required />
+        <button onclick="login()">Davom etish</button>
+    </div>
+
+    <script>
+        function login() {
+            const name = document.getElementById('name').value.trim().toLowerCase();
+            const password = document.getElementById('password').value;
+            const number = document.getElementById('number').value;
+
+            const user = {
+                name,
+                number,
+                password
+            };
+            localStorage.setItem('user', JSON.stringify(user));
+
+            if (name === "damir" && number === "+996220259759" && password === "20071007") {
+                window.location.href = "admin.html"; // Admin panel
+            } else {
+                window.location.href = "asosiy.html"; // Foydalanuvchi oynasi
+            }
+        }
+
+        // Agar ro‘yxatdan o‘tgan bo‘lsa, avtomatik yo‘naltirish
+        const saved = JSON.parse(localStorage.getItem('user'));
+        if (saved) {
+            if (saved.name === "damirshakh" && saved.password === "20071007") {
+                window.location.href = "admin.html";
+            } else {
+                window.location.href = "asosiy.html";
+            }
+        }
+    </script>
+</body>
+
+</html>
